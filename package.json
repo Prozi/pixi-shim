@@ -1,6 +1,6 @@
 {
   "name": "pixi-shim",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "pixijs shim for backend use of pixijs",
   "main": "index.js",
   "repository": {
@@ -18,7 +18,7 @@
   "author": "Jacek Pietal (prozi85@gmail.com)",
   "license": "MIT",
   "dependencies": {
-    "canvas": "^2.0.0-alpha.9",
+    "canvas": "^1.6.9",
     "jsdom": "^11.5.1",
     "jsdom-global": "^3.0.2"
   }
