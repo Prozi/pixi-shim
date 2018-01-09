@@ -1,0 +1,25 @@
+{
+  "name": "pixi-shim",
+  "version": "1.0.0",
+  "description": "pixijs shim for backend use of pixijs",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Prozi/pixi-shim.git"
+  },
+  "keywords": [
+    "pixijs",
+    "shim",
+    "universal",
+    "nodejs",
+    "canvas",
+    "jsdom"
+  ],
+  "author": "Jacek Pietal (prozi85@gmail.com)",
+  "license": "MIT",
+  "dependencies": {
+    "canvas": "^2.0.0-alpha.9",
+    "jsdom": "^11.5.1",
+    "jsdom-global": "^3.0.2"
+  }
+}
