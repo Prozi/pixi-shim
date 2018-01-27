@@ -1,7 +1,7 @@
 {
   "name": "pixi-shim",
-  "version": "1.0.1",
-  "description": "pixijs shim for backend use of pixijs",
+  "version": "1.1.0",
+  "description": "singleton pixijs shim for backend use of pixijs",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   "dependencies": {
     "canvas": "^1.6.9",
     "jsdom": "^11.5.1",
-    "jsdom-global": "^3.0.2"
+    "jsdom-global": "^3.0.2",
+    "pixi.js": "latest"
   }
 }
