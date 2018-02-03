@@ -1,7 +1,8 @@
 
 # pixi.js backend shim 
 
-for using canvas in node with pixi.js (and maybe tiled-utils)
+for using canvas in node with pixi.js
+(and maybe tiled-utils)
 
 with lazy loading of
 
@@ -12,20 +13,40 @@ with lazy loading of
 
 returns PIXI instance
 
-https://github.com/Automattic/node-canvas/wiki/Installation---Windows
-
-https://www.microsoft.com/en-us/download/details.aspx?id=48159
-
-* Windows SDK 8.1
-
-* Uniwersalny zestaw CRT systemu Windows
-
 example use (in node js env):
-```
-# for pixi in node js
+```javascript
+// file1.js
 const PIXI = require('pixi-shim')
+...
 
-# for tiled integration with pixi (in node/browser)
-const TiledUtils = require('tiled-utils')
-const tu = new TiledUtils(PIXI)
+// file2.js
+const PIXI = require('pixi-shim')
+...
+
+// server.js
+require('./file1')
+require('./file2')
+// no runtime conflicts, all dependencies have been included once
 ```
+
+## Installation
+
+This depends on `node-canvas` library, so you can read the official guide:
+
+https://github.com/Automattic/node-canvas/wiki
+
+## Troubleshooting (Windows)
+
+Install: https://chocolatey.org/
+
+```bash
+choco install -y python2 gtk-runtime microsoft-build-tools libjpeg-turbo
+```
+
+Find and install those:
+
+* Microsoft Build Tools
+
+* Windows SDK (Software Development Kit)
+
+* Universal C Runtime
