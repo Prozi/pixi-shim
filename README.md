@@ -41,6 +41,7 @@ Install: https://chocolatey.org/
 
 ```bash
 choco install -y python2 gtk-runtime microsoft-build-tools libjpeg-turbo
+npm i -g node-gyp
 ```
 
 Find and install those:
@@ -50,3 +51,5 @@ Find and install those:
 * Windows SDK (Software Development Kit)
 
 * Universal C Runtime
+
+* https://www.visualstudio.com/fr/post-download-vs/?sku=xdesk&clcid=0x409&telem=ga
