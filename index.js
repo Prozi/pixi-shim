@@ -5,7 +5,7 @@ if (!global.window) {
 }
 
 if (!global.Canvas) {
-  global.Canvas = require('canvas')
+  global.Canvas = require('canvas-prebuilt')
 }
 
 if (!global.Image) {
