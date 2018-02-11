@@ -29,27 +29,3 @@ require('./file2')
 // no runtime conflicts, all dependencies have been included once
 ```
 
-## Installation
-
-This depends on `node-canvas` library, so you can read the official guide:
-
-https://github.com/Automattic/node-canvas/wiki
-
-## Troubleshooting (Windows)
-
-Install: https://chocolatey.org/
-
-```bash
-choco install -y python2 gtk-runtime microsoft-build-tools libjpeg-turbo
-npm i -g node-gyp
-```
-
-Find and install those:
-
-* Microsoft Build Tools
-
-* Windows SDK (Software Development Kit)
-
-* Universal C Runtime
-
-* https://www.visualstudio.com/fr/post-download-vs/?sku=xdesk&clcid=0x409&telem=ga
