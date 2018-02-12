@@ -1,14 +1,29 @@
 'use strict'
 
+console.time('pixi-shim initialized in');
+
+// require once
 if (!global.window) {
+  console.log('pixi-shim polyfill dom')
   require('jsdom-global')()  
 }
 
-if (!global.Canvas) {
-  global.Canvas = require('canvas-prebuilt')
+// test for canvas capabilities
+const canvas = document.createElement('canvas')
+if (!canvas.getContext || !canvas.getContext('2d')) {
+  // requrie once
+  if (!global.Canvas) {
+    console.log('pixi-shim polyfill canvas for canvas')
+    global.Canvas = require('canvas-prebuilt')
+  }
 }
 
 if (!global.Image) {
+  // this might be required for image
+  if (!global.Canvas) {
+    console.log('pixi-shim polyfill canvas for image')
+    global.Canvas = require('canvas-prebuilt')
+  }
   global.Image = global.Canvas.Image
 
   // Node canvas Image's dont currently have `addEventListener` so we fake it for now.
@@ -43,9 +58,12 @@ if (!global.navigator) {
 }
 
 if (!global.window.PIXI) {
+  console.log('pixi-shim load pixijs')
   global.window.PIXI = require('pixi.js')
 }
 
 module.exports = global.window.PIXI
 
 module.exports.default = module.exports
+
+console.timeEnd('pixi-shim initialized in')
