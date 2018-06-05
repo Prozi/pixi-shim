@@ -10,9 +10,17 @@ if (typeof window === 'undefined') {
     require('jsdom-global')()  
   }
 
+  function tryCanvas(canvas) {
+    try {
+      return (canvas.getContext || canvas.getContext('2d'))
+    } catch (err) {
+      return false
+    }
+  }
+
   // test for canvas capabilities
   var canvas = document.createElement('canvas')
-  if (!canvas.getContext || !canvas.getContext('2d')) {
+  if (!tryCanvas(canvas)) {
     // require once
     if (!global.Canvas) {
       console.log('pixi-shim: polyfill canvas for canvas')
