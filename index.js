@@ -7,12 +7,12 @@ if (typeof window === 'undefined') {
   // require once
   if (!global.window) {
     console.log('pixi-shim: polyfill dom')
-    require('jsdom-global')()  
+    require('jsdom-global')()
   }
 
   function tryCanvas(canvas) {
     try {
-      return (canvas.getContext || canvas.getContext('2d'))
+      return (canvas.getContext && canvas.getContext('2d'))
     } catch (err) {
       return false
     }
