@@ -18,7 +18,7 @@
   "author": "Jacek Pietal (prozi85@gmail.com)",
   "license": "MIT",
   "dependencies": {
-    "canvas-prebuilt": "~1.5",
+    "canvas-prebuilt": "~1",
     "jsdom": "latest",
     "jsdom-global": "latest",
     "pixi.js": "latest"
