@@ -20,7 +20,7 @@
   "dependencies": {
     "canvas-prebuilt": "~1.4",
     "jsdom": "~11.11.0",
-    "jsdom-global": "latest",
+    "jsdom-global": "https://github.com/Prozi/jsdom-global",
     "pixi.js": "latest"
   }
 }
