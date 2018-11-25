@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "canvas-prebuilt": "~1.4",
-    "jsdom": "latest",
+    "jsdom": "~11.11.0",
     "jsdom-global": "latest",
     "pixi.js": "latest"
   }
