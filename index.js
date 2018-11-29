@@ -7,7 +7,7 @@ if (typeof window === 'undefined') {
   // require once
   if (!global.window) {
     console.log('pixi-shim: polyfill dom')
-    require('jsdom-global')()
+    require('jsdom-global-fork')()
   }
 
   function tryCanvas(canvas) {
