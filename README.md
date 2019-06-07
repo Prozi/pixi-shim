@@ -3,8 +3,6 @@
 
 for using canvas in node with pixi.js
 
-(and maybe `tiled-utils`)
-
 # installation
 
 ```
