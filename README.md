@@ -1,16 +1,10 @@
+# PIXI-SHIM
 
-# pixi.js backend shim 
+## pixi.js backend shim 
 
-for using canvas in node with pixi.js
+for using canvas in node with ❤️ pixi.js
 
-# installation
-
-```
-yarn add pixi-shim --save
-# or
-# npm install pixi-shim --save
-```
-# purpouse
+## purpouse
 
 1. designed for node - it makes you run universal javascript code that is designed with pixi.js on node.js environment
 
@@ -18,7 +12,7 @@ yarn add pixi-shim --save
 
 3. it is singleton - including multiple instances of pixi.js can cause `Cannot redefine property isJson` Error
 
-# lazy loading
+## lazy loading
 
 with lazy loading of
 
@@ -30,6 +24,13 @@ with lazy loading of
 # returns
 
 PIXI instance
+
+## installation
+
+```bash
+yarn add pixi.js pixi-shim --save
+# or `npm install pixi.js pixi-shim --save`
+```
 
 # example use (in node js env):
 
