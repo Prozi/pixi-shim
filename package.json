@@ -1,6 +1,6 @@
 {
   "name": "pixi-shim",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "singleton pixijs shim for backend use of pixijs",
   "main": "index.js",
   "scripts": {
@@ -21,14 +21,15 @@
   "author": "Jacek Pietal (prozi85@gmail.com)",
   "license": "MIT",
   "dependencies": {
-    "canvas-prebuilt": "^1.6.11",
-    "jsdom-global-fork": "^3.0.2"
-  },
-  "peerDependencies": {
-    "pixi.js": "*"
+    "canvas": "*",
+    "jsdom-global": "*",
+    "pixi.js": "*",
+    "jsdom": "*"
   },
   "devDependencies": {
-    "request": "^2.88.0",
-    "pixi.js": "latest"
+    "request": "^2.88.0"
+  },
+  "dependencies": {
+    "jsdom": "^15.1.1"
   }
 }
