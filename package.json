@@ -22,9 +22,10 @@
   "license": "MIT",
   "dependencies": {
     "canvas": "*",
+    "jsdom": "*",
     "jsdom-global": "*",
     "pixi.js": "*",
-    "jsdom": "*"
+    "pixi.js-legacy": "^5.0.4"
   },
   "devDependencies": {
     "request": "^2.88.0"

@@ -1,3 +1,5 @@
-console.log(require('.'))
-process.exit(0)
+const { Application } = require('.')
 
+console.log(new Application())
+
+process.exit(0)
