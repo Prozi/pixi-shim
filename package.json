@@ -1,6 +1,6 @@
 {
   "name": "pixi-shim",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "singleton pixijs shim for backend use of pixijs",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,7 @@
     "jsdom": "*",
     "jsdom-global": "*",
     "pixi.js": "*",
-    "pixi.js-legacy": "^5.0.4"
+    "pixi.js-legacy": "^5.1.5"
   },
   "devDependencies": {
     "request": "^2.88.0"
