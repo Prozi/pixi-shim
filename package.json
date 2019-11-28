@@ -1,7 +1,7 @@
 {
   "name": "pixi-shim",
-  "version": "1.7.0",
-  "description": "singleton pixijs shim for backend use of pixijs",
+  "version": "1.7.1",
+  "description": "pixijs shim for backend use of pixijs",
   "main": "index.js",
   "scripts": {
     "test": "node tests"
