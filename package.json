@@ -1,10 +1,10 @@
 {
   "name": "pixi-shim",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "description": "singleton pixijs shim for backend use of pixijs",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node tests"
   },
   "repository": {
     "type": "git",
@@ -21,13 +21,11 @@
   "author": "Jacek Pietal (prozi85@gmail.com)",
   "license": "MIT",
   "dependencies": {
-    "canvas": "*",
+    "canvas-prebuilt": "*",
+    "gl": "*",
     "jsdom": "*",
     "jsdom-global": "*",
     "pixi.js": "*",
-    "pixi.js-legacy": "^5.1.5"
-  },
-  "devDependencies": {
-    "request": "^2.88.0"
+    "pixi.js-legacy": "*"
   }
 }
