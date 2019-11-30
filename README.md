@@ -20,7 +20,7 @@ with lazy loading of
 * PIXI
 
 - `require('pixi-shim')` returns `PIXI` class just like
-- `require('pixi')` would
+- `require('pixi.js')` would
 
 ## installation
 
@@ -37,17 +37,20 @@ yarn add pixi-shim --save
 
 ## example use (in node js env):
 
+file1.js
 ```javascript
-// file1.js
 const PIXI = require('pixi-shim')
-...
+```
 
-// file2.js
+file2.js
+```javascript
 const PIXI = require('pixi-shim')
-...
+```
 
-// server.js
+server.js
+```javascript
 require('./file1')
 require('./file2')
-// no runtime conflicts, all dependencies have been included once
+
+// No runtime conflicts, all dependencies have been included once
 ```
