@@ -2,7 +2,11 @@
 
 PIXI.js Back-End "shim". For using <s>Canvas</s> WebGL in Node.js with <span style="color: red">❤️</span> pixi.js
 
-## purpouse
+[![npm version](https://badge.fury.io/js/pixi-shim.svg)](https://badge.fury.io/js/pixi-shim) 
+[![Known Vulnerabilities](https://snyk.io/test/github/Prozi/pixi-shim/badge.svg)](https://snyk.io/test/github/Prozi/pixi-shim) 
+[![CircleCI](https://circleci.com/gh/Prozi/pixi-shim.svg?style=svg)](https://circleci.com/gh/Prozi/pixi-shim) 
+
+## Purpouse
 
 1. Designed for node - it makes you run universal javascript code that is designed with pixi.js on node.js environment
 
@@ -10,7 +14,7 @@ PIXI.js Back-End "shim". For using <s>Canvas</s> WebGL in Node.js with <span sty
 
 3. It wont even load itself twice - while including multiple instances of pixi.js can cause `Cannot redefine property isJson` Error
 
-## lazy loading
+## Lazy loading
 
 with lazy loading of
 
@@ -22,7 +26,7 @@ with lazy loading of
 - `require('pixi-shim')` returns `PIXI` class just like
 - `require('pixi.js')` would
 
-## installation
+## Installation
 
 ```bash
 yarn add pixi-shim --save
@@ -32,10 +36,10 @@ yarn add pixi-shim --save
 
 * Version: 2.0
 * FPS: ~666
-* toDataURL: not implemented
+* toDataURL: not ready yet (renders transparent image)
 * PIXI: implemented
 
-## example use (in node js env):
+## Example use (in node js env):
 
 file1.js
 ```javascript
@@ -54,3 +58,23 @@ require('./file2')
 
 // No runtime conflicts, all dependencies have been included once
 ```
+
+## Troubleshooting
+
+* Error: libpng12.so.0: cannot open shared object file: No such file or directory
+
+Solution: `sudo apt install libpng-dev`
+
+More info: https://github.com/node-gfx/node-canvas-prebuilt/issues/15
+
+* Error: `undefined symbol: _ZN2v87Isolate19CheckMemoryPressureEv`
+
+More info: https://github.com/Automattic/node-canvas/issues/1252
+
+Solution: Use node >= 10
+
+* Error: `undefined symbol: _Z15XextFindDisplayP15_XExtensionInfoP9_XDisplay`
+
+Solution: `npm run rebuild`
+
+More info: https://github.com/stackgl/headless-gl/issues/65
