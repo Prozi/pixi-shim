@@ -81,9 +81,15 @@ Solution: Use node >= 10
 
 * Error: `node: cairo.c:305: cairo_destroy: Assertion '(_cairo_atomic_int_get (&(&cr->ref_count)->ref_count) > 0)' failed.`
 
-Solution: `sudo apt-get install libcairo2-dev`
+Solution: `sudo apt install libcairo2-dev`
 
 More info: https://www.cairographics.org/download/
+
+* Error: `GLIBCXX_3.4.20 not found`
+
+Solution: `sudo apt install libstdc++6`
+
+More info: https://askubuntu.com/questions/575505/glibcxx-3-4-20-not-found-how-to-fix-this-error
 
 ## CI Setup
 
