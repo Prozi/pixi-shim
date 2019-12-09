@@ -93,4 +93,4 @@ More info: https://askubuntu.com/questions/575505/glibcxx-3-4-20-not-found-how-t
 
 ## CI Setup
 
-`sudo apt install libxrandr-dev libxinerama-dev libxcursor-dev libfreeimage-dev libglew-dev libxi-dev libglfw3 -y`
+`sudo apt install xserver-xorg-dev libxi-dev libxext-dev libstdc++6 libxrandr-dev libxinerama-dev libxcursor-dev libfreeimage-dev libglew-dev libxi-dev libglfw3 -y`
