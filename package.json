@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "node tests",
-    "postinstall": "cd node_modules/gl && yarn node-gyp rebuild -C"
+    "postinstall:node-gles": "cd node_modules/node-gles/ && npm run build-npm",
+    "postinstall": "yarn postinstall:node-gles"
   },
   "repository": {
     "type": "git",
@@ -22,10 +23,11 @@
   "author": "Jacek Pietal (prozi85@gmail.com)",
   "license": "MIT",
   "dependencies": {
-    "canvas-prebuilt": "^2.0.0-alpha.14",
-    "gl": "*",
+    "canvas": "^2.6.1",
     "jsdom": "*",
     "jsdom-global": "*",
+    "node-addon-api": "^2.0.0",
+    "node-gles": "https://github.com/google/node-gles.git",
     "pixi.js": "*"
   }
 }

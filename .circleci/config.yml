@@ -6,7 +6,7 @@ jobs:
     steps:
       - run:
           name: Prepare env
-          command: "sudo apt install xserver-xorg-dev libxi-dev libxext-dev -y"
+          command: "sudo apt install libxrandr-dev libxinerama-dev libxcursor-dev libfreeimage-dev libglew-dev libxi-dev libglfw3 -y"
       - checkout
       - run:
           name: Update yarn

@@ -61,6 +61,12 @@ require('./file2')
 
 ## Troubleshooting
 
+* Error: `undefined symbol: _Z15XextFindDisplayP15_XExtensionInfoP9_XDisplay`
+
+Solution: `npm run rebuild`
+
+More info: https://github.com/stackgl/headless-gl/issues/65
+
 * Error: libpng12.so.0: cannot open shared object file: No such file or directory
 
 Solution: `sudo apt install libpng-dev`
@@ -73,8 +79,12 @@ More info: https://github.com/Automattic/node-canvas/issues/1252
 
 Solution: Use node >= 10
 
-* Error: `undefined symbol: _Z15XextFindDisplayP15_XExtensionInfoP9_XDisplay`
+* Error: `node: cairo.c:305: cairo_destroy: Assertion '(_cairo_atomic_int_get (&(&cr->ref_count)->ref_count) > 0)' failed.`
 
-Solution: `npm run rebuild`
+Solution: `sudo apt-get install libcairo2-dev`
 
-More info: https://github.com/stackgl/headless-gl/issues/65
+More info: https://www.cairographics.org/download/
+
+## CI Setup
+
+`sudo apt install libxrandr-dev libxinerama-dev libxcursor-dev libfreeimage-dev libglew-dev libxi-dev libglfw3 -y`
