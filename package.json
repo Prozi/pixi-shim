@@ -1,12 +1,12 @@
 {
   "name": "pixi-shim",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "pixijs shim for backend use of pixijs",
   "main": "index.js",
   "scripts": {
     "test": "node tests",
-    "postinstall:node-gles": "cd node_modules/node-gles/ && npm run build-npm",
-    "postinstall": "yarn postinstall:node-gles"
+    "patch-pixi-gl": "sed 's/this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, false);/this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, 0);/g' node_modules/@pixi/core/lib/core.js -i",
+    "postinstall": "npm run patch-pixi-gl"
   },
   "repository": {
     "type": "git",
@@ -23,11 +23,12 @@
   "author": "Jacek Pietal (prozi85@gmail.com)",
   "license": "MIT",
   "dependencies": {
-    "canvas": "^2.6.1",
+    "canvas": "^2",
     "jsdom": "*",
     "jsdom-global": "*",
-    "node-addon-api": "^2.0.0",
-    "node-gles": "https://github.com/google/node-gles.git",
+    "node-addon-api": "*",
+    "node-gles": "*",
     "pixi.js": "*"
-  }
+  },
+  "devDependencies": {}
 }

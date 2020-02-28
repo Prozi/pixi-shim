@@ -4,5 +4,9 @@ module.exports = {
     commonjs: true,
     es6: true
   },
-  extends: "eslint:recommended"
+  rules: {
+    quotes: ["error", "single"],
+    semi: ["error", "never"]
+  },
+  extends: ["eslint:recommended"]
 };
