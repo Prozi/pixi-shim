@@ -1,12 +1,11 @@
 {
   "name": "pixi-shim",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "description": "pixijs shim for backend use of pixijs",
   "main": "index.js",
   "scripts": {
     "test": "node tests",
-    "patch-pixi-gl": "sed 's/this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, false);/this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, 0);/g' node_modules/@pixi/core/lib/core.js -i",
-    "postinstall": "npm run patch-pixi-gl"
+    "patch-pixi-gl": "sed 's/this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, false);/this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, 0);/g' node_modules/@pixi/core/lib/core.js -i"
   },
   "repository": {
     "type": "git",
