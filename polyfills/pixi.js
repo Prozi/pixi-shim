@@ -6,18 +6,56 @@ console.log("pixi-shim ❤️ PIXI.js");
 
 const getObject = () => {};
 const context = new DummyContext();
-const texture = { addChild: getObject, width: 16, height: 16, x: 0, y: 0 };
-const sprite = texture;
+
+class Point {
+  constructor(x = 0, y = 0) {
+    this.set(x, y);
+    this.width = 16;
+    this.height = 16;
+  }
+  
+  set (x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
+function Container() {
+  this.position = new Point(0, 0);
+  this.anchor = new Point(0, 0);
+  this.scale = new Point(0, 0);
+  this.children = [];
+}
+Container.prototype.addChildAt = () => undefined;
+Container.prototype.addChild = () => undefined;
+Container.prototype.removeChild = () => undefined;
+
+class Rectangle extends Container {};
+
+class Sprite extends Container {};
+Sprite.from = () => new Sprite();
+
+class TilingSprite extends Sprite {};
+
+class Texture extends Sprite {};
+Texture.from = () => new Texture();
+Texture.prototype.baseTexture = {};
 
 const PIXI = {
   utils: {},
   Renderer: { prototype: {} },
   Ticker: { shared: { add: getObject } },
   Loader: { shared: { add: getObject }, prototype: {} },
-  Texture: { from: () => texture },
-  Sprite: { from: () => sprite },
+  Texture: { from: () => new Texture() },
+  Sprite,
+  Rectangle,
+  Container,
+  Texture,
+  TilingSprite,
+  SCALE_MODES: {},
+  UPDATE_PRIORITY: {},
   Application: function () {
-    this.stage = window.PIXI.Sprite.from();
+    this.stage = new Sprite();
     this.view = { getContext: () => context, toDataURL: () => "" };
     this.render = getObject;
   },
