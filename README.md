@@ -35,10 +35,7 @@ with lazy loading of
 ## Installation
 
 ```bash
-$ yarn add pixi-shim canvas@^2 --save
-
-# in case of problems
-$ npx node-gyp rebuild
+$ yarn add pixi-shim --save
 ```
 
 ## WebGL State
