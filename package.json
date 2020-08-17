@@ -1,6 +1,6 @@
 {
   "name": "pixi-shim",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "pixijs shim for backend use of pixijs",
   "main": "index.js",
   "scripts": {
@@ -23,15 +23,15 @@
   "license": "MIT",
   "dependencies": {
     "jsdom": "*",
-    "jsdom-global": "*",
-    "pixi.js": "*"
+    "jsdom-global": "*"
   },
   "devDependencies": {},
   "peerDependencies": {
     "canvas": "^2",
+    "gl": "*",
     "node-addon-api": "*",
     "node-gles": "*",
-    "gl": "*"
+    "pixi.js": "*"
   },
   "snyk": true
 }
