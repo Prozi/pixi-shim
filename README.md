@@ -1,10 +1,16 @@
-# PIXI-SHIM
+<h1 align="center">
+    PIXI-SHIM
+</h1>
 
-PIXI.js Back-End "shim". For using <s>Canvas</s> WebGL in Node.js with <span style="color: red">❤️</span> pixi.js
+<p align="center">
+    PIXI.js Back-End "shim". For using <s>Canvas</s> WebGL in Node.js with <span style="color: red">❤️</span> pixi.js
+</p>
 
-[![npm version](https://badge.fury.io/js/pixi-shim.svg)](https://badge.fury.io/js/pixi-shim) 
-[![Known Vulnerabilities](https://snyk.io/test/github/Prozi/pixi-shim/badge.svg)](https://snyk.io/test/github/Prozi/pixi-shim) 
-[![CircleCI](https://circleci.com/gh/Prozi/pixi-shim.svg?style=svg)](https://circleci.com/gh/Prozi/pixi-shim) 
+<p align="center">
+    <img src="https://badge.fury.io/js/pixi-shim.svg" alt="https://badge.fury.io/js/pixi-shim" />
+    <img src="https://snyk.io/test/github/Prozi/pixi-shim/badge.svg" alt="https://snyk.io/test/github/Prozi/pixi-shim" />
+    <img src="https://circleci.com/gh/Prozi/pixi-shim.svg?style=svg" alt="https://circleci.com/gh/Prozi/pixi-shim" />
+</p>
 
 ## Purpouse
 
@@ -18,74 +24,108 @@ PIXI.js Back-End "shim". For using <s>Canvas</s> WebGL in Node.js with <span sty
 
 with lazy loading of
 
-* DOM
-* Canvas
-* WebGL
-* PIXI
+- DOM
+- Canvas
+- WebGL
+- PIXI
 
-- `require('pixi-shim')` returns `PIXI` class just like
-- `require('pixi.js')` would
+* `require('pixi-shim')` returns `PIXI` class just like
+* `require('pixi.js')` would
 
 ## Installation
 
 ```bash
-yarn add pixi-shim --save
+$ yarn add pixi-shim canvas@^2 --save
+
+# in case of problems
+$ npx node-gyp rebuild
 ```
 
 ## WebGL State
 
-* Version: 2.0
-* FPS: ~666
-* toDataURL: not ready yet (renders transparent image)
-* PIXI: implemented
+- Version: 2.0
+- FPS: ~666
+- toDataURL: not ready yet (renders transparent image)
+- PIXI: implemented
 
 ## Example use (in node js env):
 
 file1.js
+
 ```javascript
-const PIXI = require('pixi-shim')
+const PIXI = require("pixi-shim");
 ```
 
 file2.js
+
 ```javascript
-const PIXI = require('pixi-shim')
+const PIXI = require("pixi-shim");
 ```
 
 server.js
+
 ```javascript
-require('./file1')
-require('./file2')
+require("./file1");
+require("./file2");
 
 // No runtime conflicts, all dependencies have been included once
 ```
 
+## Current Implementation _does not load pixi_, it only shims it
+
+- To make it work like it did before version 2.0:
+
+```javascript
+// this will make pixi-shim not shim pixi
+global.window = require("pixi-shim/polyfills/window");
+global.window.PIXI = true;
+require("pixi-shim");
+
+// `npm install canvas@^2 --save`
+require("pixi-shim/polyfills/canvas-lib");
+// `npm install gl node-addon-api node-gles --save`
+require("pixi-shim/polyfills/webgl");
+
+// now fill with what it should be
+global.window.PIXI = require("pixi.js");
+```
+
 ## Troubleshooting
 
-* Error: `undefined symbol: _Z15XextFindDisplayP15_XExtensionInfoP9_XDisplay`
+- Error: node-gyp fails to build canvas library
+
+Solution:
+
+```bash
+$ choco install python
+$ npm install --global --production windows-build-tools --registry https://registry.npmjs.org
+```
+
+- Error: `undefined symbol: _Z15XextFindDisplayP15_XExtensionInfoP9_XDisplay`
 
 Solution: `npm run rebuild`
 
 More info: https://github.com/stackgl/headless-gl/issues/65
 
-* Error: libpng12.so.0: cannot open shared object file: No such file or directory
+- Error: libpng12.so.0: cannot open shared object file: No such file or directory
 
 Solution: `sudo apt install libpng-dev`
 
 More info: https://github.com/node-gfx/node-canvas-prebuilt/issues/15
 
-* Error: `undefined symbol: _ZN2v87Isolate19CheckMemoryPressureEv`
+- Error: `undefined symbol: _ZN2v87Isolate19CheckMemoryPressureEv`
 
 More info: https://github.com/Automattic/node-canvas/issues/1252
 
 Solution: Use node >= 10
 
-* Error: `node: cairo.c:305: cairo_destroy: Assertion '(_cairo_atomic_int_get (&(&cr->ref_count)->ref_count) > 0)' failed.`
+- Error: `node: cairo.c:305: cairo_destroy: Assertion '(_cairo_atomic_int_get (&(&cr->ref_count)->ref_count) > 0)' failed.`
 
 Solution: `sudo apt install libcairo2-dev`
 
 More info: https://www.cairographics.org/download/
 
-* Error: `GLIBCXX_3.4.20 not found`
+- Error: `GLIBCXX_3.4.20 not found`
 
 Solution: `sudo apt install libstdc++6`
 

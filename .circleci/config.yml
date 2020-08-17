@@ -1,36 +1,39 @@
-version: 2.1
-
-executors:
-  my:
-    docker:
-      - image: circleci/buildpack-deps:bionic
-
+version: 2
 jobs:
   build:
-    executor: my
+    docker:
+      - image: circleci/node:jessie
     steps:
-      # apt prepare
-      - run: sudo apt install -y nodejs npm node-gyp nodejs-dev libssl1.0-dev clang gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
-      # verify
-      - run: clang --version
-      - run: clang++ --version
-      - run: aarch64-linux-gnu-gcc --version
-      - run: aarch64-linux-gnu-g++ --version
-      - run: node --version
-      - run: npm --version
-      # make cache folder (if missing) and take ownership
-      - run: sudo mkdir -p /usr/local/n
-      - run: sudo chown -R $(whoami) /usr/local/n
-      # take ownership of node install destination folders
-      - run: sudo chown -R $(whoami) /usr/local/bin /usr/local/lib /usr/local/include /usr/local/share
-      # upgrade node + add yarn
-      - run: npm i -g n
-      - run: n 12
-      - run: npm i -g yarn
-      - run: node --version
-      - run: npm --version
-      - run: yarn --version
-      # test
+      - run:
+          name: Prepare env
+          command: "sudo apt install xserver-xorg-dev libxi-dev libxext-dev -y"
       - checkout
-      - run: yarn
-      - run: yarn test
+      - run:
+          name: Update yarn
+          command: "sudo npm i -g yarn"
+      - run:
+          name: Install project dependencies
+          command: "yarn install"
+  test:
+    docker:
+      - image: circleci/node:jessie
+    steps:
+      - run:
+          name: Test
+          command: yarn test
+      - run:
+          name: Generate code coverage
+          command: "./node_modules/.bin/nyc report --reporter=text-lcov"
+      - store_artifacts:
+          path: test-results.xml
+      - store_artifacts:
+          path: coverage
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build

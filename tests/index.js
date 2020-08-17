@@ -31,7 +31,7 @@ console.log({
 });
 
 // FPS Test
-app.ticker.add(gameLoop);
+PIXI.Ticker.shared.add(gameLoop);
 
 setTimeout(() => {
   console.log({ FPS: sprite.x.toFixed(2) });
