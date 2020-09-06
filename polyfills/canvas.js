@@ -1,5 +1,7 @@
 "use strict";
 
+const DummyContext = require("../dummy");
+
 /* global process */
 
 HTMLCanvasElement.prototype.getContext = function (
@@ -26,7 +28,7 @@ HTMLCanvasElement.prototype.getContext = function (
     this._contextOptions = stringified;
 
     if (type === "2d") {
-      this[ref] = new CanvasRenderingContext2D(this, contextOptions);
+      this[ref] = new DummyContext(this, contextOptions);
     } else {
       const gl = (this[ref] = createWebGLRenderingContext(contextOptions));
 
