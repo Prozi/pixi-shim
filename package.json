@@ -1,10 +1,10 @@
 {
   "name": "pixi-shim",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "pixijs shim for backend use of pixijs",
   "main": "index.js",
   "scripts": {
-    "test": "node tests",
+    "test": "jest",
     "patch-pixi-gl": "sed 's/this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, false);/this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, 0);/g' node_modules/@pixi/core/lib/core.js -i"
   },
   "repository": {
@@ -25,13 +25,9 @@
     "jsdom": "*",
     "jsdom-global": "*"
   },
-  "devDependencies": {},
-  "peerDependencies": {
-    "canvas": "^2",
-    "gl": "*",
-    "node-addon-api": "*",
-    "node-gles": "*",
-    "pixi.js": "*"
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "prettier": "^2.3.0"
   },
   "snyk": true
 }
