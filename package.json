@@ -1,6 +1,6 @@
 {
   "name": "pixi-shim",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "pixijs shim for backend use of pixijs",
   "main": "index.js",
   "scripts": {
@@ -28,8 +28,22 @@
   "devDependencies": {
     "canvas": "2",
     "jest": "^26.6.3",
+    "jest-text-reporter": "^1.0.0",
     "pixi.js-legacy": "^6.0.3",
     "prettier": "^2.3.0"
   },
-  "snyk": true
+  "snyk": true,
+  "jest": {
+    "bail": false,
+    "reporters": [
+      "default",
+      [
+        "<rootDir>/node_modules/jest-text-reporter",
+        {
+          "outputdir": ".",
+          "filename": "test-report.txt"
+        }
+      ]
+    ]
+  }
 }

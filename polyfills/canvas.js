@@ -2,7 +2,9 @@
 
 const DummyContext = require("../dummy");
 
-/* global process */
+if (typeof HTMLCanvasElement === "undefined") {
+  global.HTMLCanvasElement = function HTMLCanvasElement() {};
+}
 
 HTMLCanvasElement.prototype.getContext = function (
   type = "2d",
@@ -52,6 +54,10 @@ HTMLCanvasElement.prototype.getContext = function (
   return this.context;
 };
 
+if (typeof document === "undefined") {
+  global.document = {};
+}
+
 document.createElement = (function (create) {
   // Closure
   return function (type) {
@@ -62,9 +68,8 @@ document.createElement = (function (create) {
         element = new Canvas(window.innerWidth, window.innerHeight);
         element.addEventListener = (action, callback) =>
           document.addEventListener(action, callback);
-        element.getContext = HTMLCanvasElement.prototype.getContext.bind(
-          element
-        );
+        element.getContext =
+          HTMLCanvasElement.prototype.getContext.bind(element);
         break;
       }
       // If other type of createElement fallback to default

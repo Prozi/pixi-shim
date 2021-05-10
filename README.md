@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-    PIXI.js Back-End "shim". For using <s>Canvas</s> WebGL in Node.js with <span style="color: red">❤️</span> pixi.js
+    PIXI.js Back-End "shim". For using Canvas <strike>WebGL</strike> in Node.js with <span style="color: red">❤️</span> pixi.js
 </p>
 
 <p align="center">
@@ -26,7 +26,7 @@ with lazy loading of
 
 - DOM
 - Canvas
-- WebGL
+- <strike>WebGL</strike>
 - PIXI
 
 * `require('pixi-shim')` returns `PIXI` class just like
@@ -81,19 +81,41 @@ yarn add canvas@2 pixi.js-legacy pixi-shim
 ```
 
 ```javascript
-const PIXI = require('pixi-shim/pixi.js');
+const PIXI = require("pixi-shim/pixi.js");
 
 console.log(PIXI);
 ```
 
 ## Tests
 
-| Test Suites:         | 2 passed,  | 2 total  |
-| -------------------- | ---------- | -------- |
-| Tests:               | 10 passed, | 10 total |
-| Snapshots:           | 0 total    |
-| Time:                | 2.284 s    |
-| Ran all test suites. |
-| Done in 2.86s.       |
+Total test suites: 2
+
+- Passed test suites: 2
+- Failed test suites: 0
+
+Total tests: 10
+
+- Passed tests: 10
+- Failed tests: 0
+
+Test Suite - index.spec.js
+
+- passed - GIVEN pixi-shim THEN requiring it doesnt throw error
+- passed - GIVEN pixi-shim THEN new PIXI.Application doesnt throw error
+- passed - GIVEN pixi-shim THEN new PIXI.Sprite from base64 image does work
+- passed - GIVEN pixi-shim THEN toDataURL doesnt yet work
+- passed - GIVEN pixi-shim THEN normal PIXI gameLoop works
+
+Test Suite - pixi.spec.js
+
+- passed - GIVEN pixi-shim/pixi THEN requiring it doesnt throw error
+- passed - GIVEN pixi-shim/pixi THEN new PIXI.Application doesnt throw error
+- passed - GIVEN pixi-shim/pixi THEN new PIXI.Sprite from base64 image does work
+- passed - GIVEN pixi-shim/pixi THEN toDataURL does work
+- passed - GIVEN pixi-shim/pixi THEN normal PIXI gameLoop works
 
 https://app.circleci.com/pipelines/github/Prozi/pixi-shim
+
+## License
+
+MIT (c) 2020-2021 Jacek Pietal

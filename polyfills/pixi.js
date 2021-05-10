@@ -19,7 +19,7 @@ class Point {
 
 class Container extends Point {
   constructor() {
-    super()
+    super();
     this.position = new Point(0, 0);
     this.anchor = new Point(0, 0);
     this.scale = new Point(0, 0);

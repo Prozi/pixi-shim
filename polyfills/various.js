@@ -1,5 +1,7 @@
 "use strict";
 
+const window = global.window;
+
 if (!window.navigator) {
   console.log("pixi-shim ❤️ polyfill navigator");
 
