@@ -61,7 +61,7 @@ describe("GIVEN pixi-shim", () => {
 
     function gameLoop() {
       sprite.x += 1000 / 60;
-      console.log({ spriteX: sprite.x.toFixed(2) });
+      // console.log({ spriteX: sprite.x.toFixed(2) });
 
       requestAnimationFrame(gameLoop);
     }

@@ -1,6 +1,6 @@
 {
   "name": "pixi-shim",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "pixijs shim for backend use of pixijs",
   "main": "index.js",
   "scripts": {
@@ -26,7 +26,9 @@
     "jsdom-global": "*"
   },
   "devDependencies": {
+    "canvas": "2",
     "jest": "^26.6.3",
+    "pixi.js-legacy": "^6.0.3",
     "prettier": "^2.3.0"
   },
   "snyk": true
