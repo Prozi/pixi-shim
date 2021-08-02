@@ -2,8 +2,14 @@
 
 const DummyContext = require("../dummy");
 
+function HTMLCanvasElement() {}
+
 if (typeof HTMLCanvasElement === "undefined") {
-  global.HTMLCanvasElement = function HTMLCanvasElement() {};
+  global.HTMLCanvasElement = HTMLCanvasElement;
+}
+
+if (!global.Canvas) {
+  global.Canvas = HTMLCanvasElement
 }
 
 HTMLCanvasElement.prototype.getContext = function (

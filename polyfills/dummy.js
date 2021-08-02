@@ -2,8 +2,6 @@
 
 const DummyContext = require("../dummy");
 
-global.Canvas = global.Canvas || function DummyCanvas() {};
-
 global.CanvasRenderingContext2D =
   global.CanvasRenderingContext2D || DummyContext;
 
