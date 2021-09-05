@@ -27,9 +27,9 @@
   },
   "devDependencies": {
     "canvas": "2",
-    "jest": "^27.0.6",
+    "jest": "^27.1.0",
     "jest-text-reporter": "^1.0.0",
-    "pixi.js-legacy": "^6.0.4",
+    "pixi.js-legacy": "^6.1.2",
     "prettier": "^2.3.2"
   },
   "snyk": true,

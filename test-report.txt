@@ -6,14 +6,14 @@ Total tests: 10
 Passed tests: 10
 Failed tests: 0
 
-Test Suite - index.spec.js
+Test Suite - /home/jacekjanpietal/projects/pixi-shim/index.spec.js
 passed - GIVEN pixi-shim THEN requiring it doesnt throw error
 passed - GIVEN pixi-shim THEN new PIXI.Application doesnt throw error
 passed - GIVEN pixi-shim THEN new PIXI.Sprite from base64 image does work
 passed - GIVEN pixi-shim THEN toDataURL doesnt yet work
 passed - GIVEN pixi-shim THEN normal PIXI gameLoop works
 
-Test Suite - pixi.spec.js
+Test Suite - /home/jacekjanpietal/projects/pixi-shim/pixi.spec.js
 passed - GIVEN pixi-shim/pixi THEN requiring it doesnt throw error
 passed - GIVEN pixi-shim/pixi THEN new PIXI.Application doesnt throw error
 passed - GIVEN pixi-shim/pixi THEN new PIXI.Sprite from base64 image does work
