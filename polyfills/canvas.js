@@ -3,99 +3,92 @@
 const DummyContext = require("../dummy");
 
 if (typeof HTMLCanvasElement === "undefined") {
-  function HTMLCanvasElement() { }
+  function HTMLCanvasElement() {}
 
   global.HTMLCanvasElement = HTMLCanvasElement;
 }
 
 if (typeof OffscreenCanvas === "undefined") {
-  function OffscreenCanvas() { }
+  function OffscreenCanvas() {}
 
   global.OffscreenCanvas = OffscreenCanvas;
 }
 
-if (!global.Canvas) {
-  global.Canvas = HTMLCanvasElement
-}
+HTMLCanvasElement.prototype.getContext = getContext;
 
-if (!HTMLCanvasElement.prototype.getContext) {
-  HTMLCanvasElement.prototype.getContext = function (
-    type = "2d",
-    contextOptions = {}
+function getContext(type = "2d", contextOptions = {}) {
+  if (
+    typeof process !== "undefined" &&
+    process.env &&
+    process.env.NODE_ENV !== "production"
   ) {
-    if (
-      typeof process !== "undefined" &&
-      process.env &&
-      process.env.NODE_ENV !== "production"
-    ) {
-      console.log({
-        getContext: {
-          type,
-          contextOptions,
-        },
-      });
-    }
-
-    const stringified = JSON.stringify(contextOptions);
-    const ref = type === "2d" ? "_context2d" : "gl";
-
-    if (!this[ref] || this._contextOptions !== stringified) {
-      this._contextOptions = stringified;
-
-      if (type === "2d") {
-        this[ref] = new DummyContext(this, contextOptions);
-      } else {
-        const gl = (this[ref] = createWebGLRenderingContext(contextOptions));
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-
-        if (
-          typeof process !== "undefined" &&
-          process.env &&
-          process.env.NODE_ENV !== "production"
-        ) {
-          console.log("WebGL Context VERSION: " + gl.getParameter(gl.VERSION));
-          console.log("WebGL Context RENDERER: " + gl.getParameter(gl.RENDERER));
-        }
-      }
-
-      this[ref].canvas = this;
-    }
-
-    this.context = this[ref];
-
-    return this.context;
-  };
-
-  if (typeof document === "undefined") {
-    global.document = {};
+    console.log({
+      getContext: {
+        type,
+        contextOptions,
+      },
+    });
   }
 
-  document.createElement = (function (create) {
-    // Closure
-    return function (type) {
-      let element;
+  const stringified = JSON.stringify(contextOptions);
+  const ref = type === "2d" ? "_context2d" : "gl";
 
-      switch (type) {
-        case "canvas": {
-          element = new Canvas(window.innerWidth, window.innerHeight);
-          element.addEventListener = (action, callback) =>
-            document.addEventListener(action, callback);
-          element.getContext =
-            HTMLCanvasElement.prototype.getContext.bind(element);
-          break;
-        }
-        // If other type of createElement fallback to default
-        default: {
-          element = create.apply(this, arguments);
-          break;
-        }
+  if (!this[ref] || this._contextOptions !== stringified) {
+    this._contextOptions = stringified;
+
+    if (type === "2d") {
+      this[ref] = new DummyContext(this, contextOptions);
+    } else {
+      const gl = (this[ref] = createWebGLRenderingContext(contextOptions));
+
+      gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+
+      if (
+        typeof process !== "undefined" &&
+        process.env &&
+        process.env.NODE_ENV !== "production"
+      ) {
+        console.log("WebGL Context VERSION: " + gl.getParameter(gl.VERSION));
+        console.log("WebGL Context RENDERER: " + gl.getParameter(gl.RENDERER));
       }
+    }
 
-      // Monkey patch style prop
-      element.style = document.createAttribute("style");
+    this[ref].canvas = this;
+  }
 
-      return element;
-    };
-  })(document.createElement);
+  this.context = this[ref];
+
+  return this.context;
 }
+
+if (typeof document === "undefined") {
+  global.document = {};
+}
+
+document.createElement = (function (create) {
+  // Closure
+  return function (type) {
+    let element;
+
+    switch (type) {
+      case "canvas": {
+        element = new Canvas(window.innerWidth, window.innerHeight);
+        element.addEventListener = (action, callback) =>
+          document.addEventListener(action, callback);
+        element.getContext =
+          HTMLCanvasElement.prototype.getContext.bind(element);
+        break;
+      }
+      // If other type of createElement fallback to default
+      default: {
+        element = create.apply(this, arguments);
+        break;
+      }
+    }
+
+    // Monkey patch style prop
+    element.style = document.createAttribute("style");
+
+    return element;
+  };
+})(document.createElement);
