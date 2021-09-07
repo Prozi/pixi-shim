@@ -14,6 +14,12 @@ if (typeof OffscreenCanvas === "undefined") {
   global.OffscreenCanvas = OffscreenCanvas;
 }
 
+if (typeof Canvas === "undefined") {
+  function Canvas() {}
+
+  global.Canvas = Canvas;
+}
+
 HTMLCanvasElement.prototype.getContext = getContext;
 
 function getContext(type = "2d", contextOptions = {}) {
