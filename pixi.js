@@ -11,12 +11,10 @@ try {
   // now fill with what it should be
   global.window.PIXI = require("pixi.js-legacy");
 } catch (err) {
-  console.warn(err.message || err);
+  console.error(err.message || err);
 
-  console.info("please run:");
-  console.info(
-    "sudo apt install xserver-xorg-dev libxi-dev libxext-dev libstdc++6 libxrandr-dev libxinerama-dev libxcursor-dev libfreeimage-dev libglew-dev libxi-dev libglfw3 -y"
-  );
+  console.info('sudo add-apt-repository ppa:ricotz/testing');
+  console.info('sudo apt-get install libcairo2-dev');
 }
 
 module.exports = global.window.PIXI;

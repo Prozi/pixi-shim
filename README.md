@@ -73,7 +73,8 @@ require("./file2");
 If you need this functionality (it requires a bit more setup)
 
 ```bash
-sudo apt install xserver-xorg-dev libxi-dev libxext-dev libstdc++6 libxrandr-dev libxinerama-dev libxcursor-dev libfreeimage-dev libglew-dev libxi-dev libglfw3 -y
+sudo add-apt-repository ppa:ricotz/testing
+sudo apt-get install libcairo2-dev
 ```
 
 ```bash

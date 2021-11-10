@@ -9,6 +9,8 @@ function getUndefined() {
 DummyContext.prototype = {
   drawImage: getUndefined,
   getImageData: getUndefined,
+  beginPath: getUndefined,
+  stroke: getUndefined,
   fillRect: getUndefined,
   bindBuffer: getUndefined,
   createBuffer: getUndefined,
