@@ -12,6 +12,7 @@ DummyContext.prototype = {
   beginPath: getUndefined,
   stroke: getUndefined,
   fillRect: getUndefined,
+  fillText: getUndefined,
   bindBuffer: getUndefined,
   createBuffer: getUndefined,
   createShader: () => ({}),

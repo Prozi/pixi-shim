@@ -1,6 +1,6 @@
 {
   "name": "pixi-shim",
-  "version": "2.3.8",
+  "version": "2.3.9",
   "description": "pixijs shim for backend use of pixijs",
   "main": "index.js",
   "scripts": {
