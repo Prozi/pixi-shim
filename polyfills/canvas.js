@@ -47,7 +47,9 @@ function getContext(type = "2d", contextOptions = {}) {
     } else {
       const gl = (this[ref] = createWebGLRenderingContext(contextOptions));
 
-      gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+      if (typeof gl.createBuffer === "function") {
+        gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+      }
 
       if (
         typeof process !== "undefined" &&
