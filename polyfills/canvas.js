@@ -47,17 +47,19 @@ function getContext(type = "2d", contextOptions = {}) {
     } else {
       const gl = (this[ref] = createWebGLRenderingContext(contextOptions));
 
-      if (typeof gl.createBuffer === "function") {
+      if (!gl) {
+        this[ref] = new DummyContext(this, contextOptions);
+      } else {
         gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-      }
-
-      if (
-        typeof process !== "undefined" &&
-        process.env &&
-        process.env.NODE_ENV !== "production"
-      ) {
-        console.log("WebGL Context VERSION: " + gl.getParameter(gl.VERSION));
-        console.log("WebGL Context RENDERER: " + gl.getParameter(gl.RENDERER));
+        
+        if (
+          typeof process !== "undefined" &&
+          process.env &&
+          process.env.NODE_ENV !== "production"
+        ) {
+          console.log("WebGL Context VERSION: " + gl.getParameter(gl.VERSION));
+          console.log("WebGL Context RENDERER: " + gl.getParameter(gl.RENDERER));
+        }
       }
     }
 
