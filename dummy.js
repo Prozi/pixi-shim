@@ -4,7 +4,6 @@ function DummyContext() { }
 
 const contextPrototype = [
   "drawImage",
-  "getImageData",
   "beginPath",
   "stroke",
   "fillRect",
@@ -95,6 +94,8 @@ const contextPrototype = [
 DummyContext.prototype = contextPrototype.reduce((context, key) => ({
   ...context,
   [key]: () => ({})
-}), {});
+}), {
+  "getImageData": () => false,
+});
 
 module.exports = DummyContext;
