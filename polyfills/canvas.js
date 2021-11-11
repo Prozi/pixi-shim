@@ -47,7 +47,7 @@ function getContext(type = "2d", contextOptions = {}) {
     } else {
       const gl = (this[ref] = createWebGLRenderingContext(contextOptions));
 
-      if (!gl) {
+      if (!gl || typeof gl.createBuffer !== "function") {
         this[ref] = new DummyContext(this, contextOptions);
       } else {
         gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
@@ -55,7 +55,8 @@ function getContext(type = "2d", contextOptions = {}) {
         if (
           typeof process !== "undefined" &&
           process.env &&
-          process.env.NODE_ENV !== "production"
+          process.env.NODE_ENV !== "production" &&
+          typeof gl.getParameter === "function"
         ) {
           console.log("WebGL Context VERSION: " + gl.getParameter(gl.VERSION));
           console.log("WebGL Context RENDERER: " + gl.getParameter(gl.RENDERER));
