@@ -13,8 +13,8 @@ try {
 } catch (err) {
   console.error(err.message || err);
 
-  console.info('sudo add-apt-repository ppa:ricotz/testing');
-  console.info('sudo apt-get install libcairo2-dev');
+  console.info("sudo add-apt-repository ppa:ricotz/testing");
+  console.info("sudo apt-get install libcairo2-dev");
 }
 
 module.exports = global.window.PIXI;

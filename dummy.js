@@ -1,6 +1,6 @@
 "use strict";
 
-function DummyContext() { }
+function DummyContext() {}
 
 const contextPrototype = [
   "drawImage",
@@ -88,14 +88,17 @@ const contextPrototype = [
   "resetTransform",
   "restore",
   "rotate",
-  "strokeRect"
+  "strokeRect",
 ];
 
-DummyContext.prototype = contextPrototype.reduce((context, key) => ({
-  ...context,
-  [key]: () => ({})
-}), {
-  "getImageData": () => false,
-});
+DummyContext.prototype = contextPrototype.reduce(
+  (context, key) => ({
+    ...context,
+    [key]: () => ({}),
+  }),
+  {
+    getImageData: () => false,
+  }
+);
 
 module.exports = DummyContext;

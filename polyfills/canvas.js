@@ -23,19 +23,6 @@ if (typeof Canvas === "undefined") {
 HTMLCanvasElement.prototype.getContext = getContext;
 
 function getContext(type = "2d", contextOptions = {}) {
-  if (
-    typeof process !== "undefined" &&
-    process.env &&
-    process.env.NODE_ENV !== "production"
-  ) {
-    console.log({
-      getContext: {
-        type,
-        contextOptions,
-      },
-    });
-  }
-
   const stringified = JSON.stringify(contextOptions);
   const ref = type === "2d" ? "_context2d" : "gl";
 
@@ -47,20 +34,10 @@ function getContext(type = "2d", contextOptions = {}) {
     } else {
       const gl = (this[ref] = createWebGLRenderingContext(contextOptions));
 
-      if (!gl || typeof gl.createBuffer !== "function") {
-        this[ref] = new DummyContext(this, contextOptions);
-      } else {
+      if (gl && typeof gl.createBuffer !== "function") {
         gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-        
-        if (
-          typeof process !== "undefined" &&
-          process.env &&
-          process.env.NODE_ENV !== "production" &&
-          typeof gl.getParameter === "function"
-        ) {
-          console.log("WebGL Context VERSION: " + gl.getParameter(gl.VERSION));
-          console.log("WebGL Context RENDERER: " + gl.getParameter(gl.RENDERER));
-        }
+      } else {
+        this[ref] = new DummyContext(this, contextOptions);
       }
     }
 
