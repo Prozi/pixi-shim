@@ -122,4 +122,4 @@ https://app.circleci.com/pipelines/github/Prozi/pixi-shim
 
 ## License
 
-MIT (c) 2020-2021 Jacek Pietal
+MIT (c) 2020-2022 Jacek Pietal
