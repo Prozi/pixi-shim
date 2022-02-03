@@ -3,8 +3,6 @@
 const window = global.window;
 
 if (!window.navigator) {
-  console.log("pixi-shim ❤️ polyfill navigator");
-
   window.navigator = { userAgent: "node.js" }; // could be anything
 
   if (typeof global !== "undefined") {
@@ -13,8 +11,6 @@ if (!window.navigator) {
 }
 
 if (!global.performance) {
-  console.log("pixi-shim ❤️ polyfill performance.now");
-
   const performance = { now: () => Date.now() };
 
   Object.defineProperty(window, "performance", performance);
@@ -22,7 +18,9 @@ if (!global.performance) {
 }
 
 if (!window.requestAnimationFrame) {
-  console.log("pixi-shim ❤️ polyfill requestAnimationFrame");
-
   global.requestAnimationFrame = window.requestAnimationFrame = setTimeout;
+}
+
+if (!window.cancelAnimationFrame) {
+  global.cancelAnimationFrame = window.cancelAnimationFrame = clearTimeout;
 }

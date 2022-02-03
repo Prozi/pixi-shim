@@ -22,28 +22,32 @@
 
 ## Lazy loading
 
-with lazy loading of
+with lazy polyfill of
 
 - DOM
+- Window
 - Canvas
-- <strike>WebGL</strike>
 - PIXI
+- other polyfills (requestAnimationFrame, etc.)
 
-* `require('pixi-shim')` returns `PIXI` class just like
-* `require('pixi.js')` would
+## Usage
+
+```js
+require("pixi-shim");
+```
+
+or if your game/app is feature-heavy and it still doesn't work, you might need to add `pixi.js-legacy` too
+
+```js
+require("pixi-shim");
+require("pixi.js-legacy");
+```
 
 ## Installation
 
 ```bash
 $ yarn add pixi-shim
 ```
-
-## WebGL State
-
-- Version: 2.0
-- FPS: ~60
-- toDataURL: ready using `pixi-shim/pixi.js`
-- PIXI: implemented
 
 ## Example use (in node js env):
 
@@ -70,12 +74,11 @@ require("./file2");
 
 ## Canvas.toDataURL()
 
-If you need this functionality (it requires a bit more setup)
+This is still a feature yet to be implemented correctly.
 
-```bash
-sudo add-apt-repository ppa:ricotz/testing
-sudo apt-get install libcairo2-dev
-```
+The hardest part is emulating a canvas on node that would be compatible with pixi.
+
+If you need this functionality, you can try, starting with:
 
 ```bash
 yarn add canvas@2 pixi.js-legacy pixi-shim
