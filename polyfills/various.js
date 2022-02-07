@@ -18,7 +18,12 @@ if (!global.performance) {
 }
 
 if (!window.requestAnimationFrame) {
-  global.requestAnimationFrame = window.requestAnimationFrame = setTimeout;
+  function requestAnimationFrame(fn) {
+    return setTimeout(fn, 17);
+  }
+
+  global.requestAnimationFrame = window.requestAnimationFrame =
+    requestAnimationFrame;
 }
 
 if (!window.cancelAnimationFrame) {
