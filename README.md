@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-    PIXI.js Back-End "shim". For using Canvas <strike>WebGL</strike> in Node.js with <span style="color: red">❤️</span> pixi.js
+    PIXI.js Back-End "shim". For mocking Canvas in Node.js with <span style="color: red">❤️</span>
 </p>
 
 <p align="center">
@@ -92,31 +92,30 @@ console.log(PIXI);
 
 ## Tests
 
+```
 Total test suites: 2
-
-- Passed test suites: 2
-- Failed test suites: 0
+Passed test suites: 2
+Done in 4.35s.
+ites: 0
 
 Total tests: 10
+Passed tests: 10
+Failed tests: 0
 
-- Passed tests: 10
-- Failed tests: 0
+Test Suite - /home/pietal/projects/pixi-shim/index.spec.js
+passed - GIVEN pixi-shim THEN requiring it doesnt throw error
+passed - GIVEN pixi-shim THEN new PIXI.Application doesnt throw error
+passed - GIVEN pixi-shim THEN new PIXI.Sprite from base64 image does *not* work
+passed - GIVEN pixi-shim THEN toDataURL does *not* yet work
+passed - GIVEN pixi-shim THEN normal PIXI gameLoop works
 
-Test Suite - index.spec.js
-
-- passed - GIVEN pixi-shim THEN requiring it doesnt throw error
-- passed - GIVEN pixi-shim THEN new PIXI.Application doesnt throw error
-- passed - GIVEN pixi-shim THEN new PIXI.Sprite from base64 image does work
-- passed - GIVEN pixi-shim THEN toDataURL doesnt yet work
-- passed - GIVEN pixi-shim THEN normal PIXI gameLoop works
-
-Test Suite - pixi.spec.js
-
-- passed - GIVEN pixi-shim/pixi THEN requiring it doesnt throw error
-- passed - GIVEN pixi-shim/pixi THEN new PIXI.Application doesnt throw error
-- passed - GIVEN pixi-shim/pixi THEN new PIXI.Sprite from base64 image does work
-- passed - GIVEN pixi-shim/pixi THEN toDataURL does work
-- passed - GIVEN pixi-shim/pixi THEN normal PIXI gameLoop works
+Test Suite - /home/pietal/projects/pixi-shim/pixi.spec.js
+passed - GIVEN pixi-shim/pixi THEN requiring it doesnt throw error
+passed - GIVEN pixi-shim/pixi THEN new PIXI.Application doesnt throw error
+passed - GIVEN pixi-shim/pixi THEN new PIXI.Sprite from base64 image *should* work
+passed - GIVEN pixi-shim/pixi THEN toDataURL *should* work with pixi.js
+passed - GIVEN pixi-shim/pixi THEN normal PIXI gameLoop works
+```
 
 https://app.circleci.com/pipelines/github/Prozi/pixi-shim
 

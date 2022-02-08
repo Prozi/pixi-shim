@@ -22,19 +22,20 @@ describe("GIVEN pixi-shim", () => {
     expect(app).not.toThrow();
   });
 
-  it("THEN new PIXI.Sprite from base64 image does work", () => {
+  it("THEN new PIXI.Sprite from base64 image does *not* work", () => {
     const PIXI = require(".");
     const image = createImage();
     const sprite = PIXI.Sprite.from(image.src);
     const { width, height } = sprite;
 
     expect(image).toBeTruthy();
-    expect(width).toBeGreaterThan(0);
-    expect(height).toBeGreaterThan(0);
     expect(sprite).toBeTruthy();
+
+    expect(width).toBe(0);
+    expect(height).toBe(0);
   });
 
-  it("THEN toDataURL doesnt yet work", () => {
+  it("THEN toDataURL does *not* yet work", () => {
     const PIXI = require(".");
     const app = new PIXI.Application({ preserveDrawingBuffer: true });
     const image = createImage();
@@ -61,7 +62,6 @@ describe("GIVEN pixi-shim", () => {
 
     function gameLoop() {
       sprite.x += 1000 / 60;
-      // console.log({ spriteX: sprite.x.toFixed(2) });
 
       requestAnimationFrame(gameLoop);
     }

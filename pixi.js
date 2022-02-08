@@ -1,18 +1,18 @@
 "use strict";
 
-try {
-  // core
-  require("./polyfills/window");
-  require("./polyfills/various");
+// those polyfills are harmless
+require("./polyfills/window");
+require("./polyfills/various");
 
-  // `npm install canvas@^2 --save`
+try {
+  // `yarn add canvas`
   require("./polyfills/canvas-lib");
 
-  // now fill with what it should be
+  // `yarn add pixi.js-legacy`
   global.window.PIXI = require("pixi.js-legacy");
 } catch (err) {
   console.error(err.message || err);
-  console.info("sudo apt-get install libcairo2-dev");
+  console.info("https://github.com/Automattic/node-canvas#compiling");
 }
 
 module.exports = global.window.PIXI;

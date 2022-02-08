@@ -7,8 +7,6 @@ console.log("pixi-shim ❤️ PIXI.js");
 class Point {
   constructor(x = 0, y = 0) {
     this.set(x, y);
-    this.width = 16;
-    this.height = 16;
   }
 
   set(x, y) {
@@ -24,15 +22,19 @@ class Container extends Point {
     this.anchor = new Point(0, 0);
     this.scale = new Point(0, 0);
     this.children = [];
+    this.width = this.height = 0;
   }
-  addChildAt() {
-    return undefined;
+  addChild(child) {
+    this.children.push(child);
   }
-  addChild() {
-    return undefined;
+  addChildAt(child, index) {
+    this.children.splice(
+      this.children.indexOf(child),
+      Math.max(0, Math.min(index, this.children.length))
+    );
   }
-  removeChild() {
-    return undefined;
+  removeChild(child) {
+    this.children.splice(this.children.indexOf(child), 1);
   }
 }
 

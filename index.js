@@ -4,9 +4,6 @@
 require("./polyfills/window");
 require("./polyfills/various");
 
-// require("./polyfills/canvas-lib");
-// require("./polyfills/webgl");
-
 // this is a total shim of context
 require("./polyfills/dummy");
 require("./polyfills/canvas");

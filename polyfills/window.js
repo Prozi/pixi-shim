@@ -3,9 +3,7 @@
 if (!global.window) {
   console.log("pixi-shim ❤️ DOM");
 
-  if (typeof window !== "undefined") {
-    global.window = window;
-  } else {
+  if (typeof window === "undefined") {
     require("jsdom-global")();
   }
 
