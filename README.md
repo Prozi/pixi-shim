@@ -74,21 +74,10 @@ require("./file2");
 
 ## Canvas.toDataURL()
 
-This is still a feature yet to be implemented correctly.
+a bit hackish but works, see:
 
-The hardest part is emulating a canvas on node that would be compatible with pixi.
-
-If you need this functionality, you can try, starting with:
-
-```bash
-yarn add canvas@2 pixi.js-legacy pixi-shim
-```
-
-```javascript
-const PIXI = require("pixi-shim/pixi.js");
-
-console.log(PIXI);
-```
+- https://github.com/Prozi/pixi-shim/blob/master/pixi.spec.js
+- https://github.com/Prozi/pixi-shim/blob/master/to-data-url.js
 
 ## Tests
 
