@@ -1,27 +1,30 @@
-const { loadImage } = require("canvas");
+const PIXI = require("./pixi");
+const { createCanvas, loadImage, Image } = require("canvas");
 
 // base64 pixi.js example bunny png
 const bunny =
   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAlCAYAAABcZvm2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAWNJREFUeNrsV8sNwjAMbUqBBWACxB2pQ8AKcGALTsAJuDEFB1gBhuDAuWICmICPQh01pXWdJqEFcaglRGRbfonjPLuMc+5QwhjLGEJfZusjxZOL9akZKye9G98vPMfvsAx4qBfKwfzBL9s6uUHpI6U/u7+BKGkNb/H6umtk7MczF0HyfKS4zo/k/4AgTV8DOizrqX8oECgC+MGa8lGJp9sJDiAB8nyqYoglvJOPbP97IqoATGxWVZeXJlMQwYHA3piF8wJIblOVNBBxe3TPMLoHIKtxrbS7AAbBrA4Y5NaPAXf8LjN6wKZ0RaZOnlAFZnuXInVR4FTE6eYp0olPhhshtXsAwY3PquoAJNkIY33U7HTs7hYBwV24ItUKqDwgKF3VzAZ6k8HF+B1BMF8xRJbeJoqMXHZAAQ1kwoluURCdzepEugGEImBrIADB7I4lyfbJLlw92FKE6b5hVd+ktv4vAQYASMWxvlAAvcsAAAAASUVORK5CYII=";
 
-// just parameterless proxy
-async function createImage() {
-  return await loadImage(bunny);
-}
-
 // this is how to create sprite for toDataURL
-async function createSprite(base64) {
-  const PIXI = require("./pixi");
-  const image = await createImage(base64);
-  const buffer = Buffer.from(image.src, "base64");
-  const baseTexture = PIXI.BaseTexture.fromBuffer(
-    buffer,
-    image.width,
-    image.height
-  );
-  const texture = new PIXI.Texture(baseTexture);
+async function createSprite() {
+  return new Promise((resolve) => {
+    loadImage(bunny).then((image) => {
+      const canvas = createCanvas(image.width, image.height, "image");
+      const ctx = canvas.getContext("2d");
 
-  return new PIXI.Sprite(texture);
+      ctx.drawImage(image, 0, 0);
+
+      const baseTexture = PIXI.BaseTexture.fromBuffer(
+        canvas.toBuffer(),
+        canvas.width,
+        canvas.height
+      );
+      const texture = new PIXI.Texture(baseTexture);
+      const sprite = new PIXI.Sprite(texture);
+
+      resolve(sprite);
+    });
+  });
 }
 
 describe("GIVEN pixi-shim/pixi", () => {
@@ -48,7 +51,15 @@ describe("GIVEN pixi-shim/pixi", () => {
 
   it("THEN toDataURL *should* work with pixi.js", (done) => {
     const PIXI = require("./pixi");
-    const app = new PIXI.Application();
+
+    const view = createCanvas(800, 600, "image");
+    view.addEventListener = () => null;
+    view.style = {};
+
+    const app = new PIXI.Application({
+      view,
+      preserveDrawingBuffer: true,
+    });
 
     createSprite(bunny).then((sprite) => {
       sprite.position.set(400, 300);
@@ -57,12 +68,32 @@ describe("GIVEN pixi-shim/pixi", () => {
       expect(sprite.width).toBeGreaterThan(0);
       expect(sprite.height).toBeGreaterThan(0);
 
-      app.renderer.backgroundColor = "transparent";
+      app.renderer.backgroundColor = 0xffffff;
       app.stage.addChild(sprite);
-      app.render(sprite);
 
-      const base64 = app.view.toDataURL("image/png", 1);
+      console.info(sprite.width, sprite.height);
+      app.render();
 
+      const ctx = app.view.getContext("2d");
+
+      // iterate over children
+      app.stage.children.forEach((child) => {
+        if (child instanceof PIXI.Sprite) {
+          const buffer = child.texture.baseTexture.resource.data;
+          const image = new Image(child.width, child.height);
+
+          image.src = buffer;
+
+          // and draw them on canvas manually
+          ctx.drawImage(
+            image,
+            child.x - child.anchor.x * child.width,
+            child.y - child.anchor.y * child.height
+          );
+        }
+      });
+
+      const base64 = app.view.toDataURL("image/png");
       console.info(base64);
 
       done();

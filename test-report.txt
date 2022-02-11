@@ -1,6 +1,6 @@
 Total test suites: 2
-Passed test suites: 2Done in 4.35s.
-ites: 0
+Passed test suites: 2
+Failed test suites: 0
 
 Total tests: 10
 Passed tests: 10
