@@ -2,7 +2,6 @@
 
 // those polyfills are harmless
 require("./polyfills/window");
-require("./polyfills/various");
 
 try {
   // `yarn add canvas`

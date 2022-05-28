@@ -1,29 +1,47 @@
 "use strict";
 
-if (!global.window) {
-  console.log("pixi-shim ❤️ DOM");
+const polyfill = require("./window-polyfill");
 
-  if (typeof window === "undefined") {
-    require("jsdom-global")();
-  }
+polyfill("window", () => {
+  require("jsdom-global")();
+});
 
-  if (typeof window === "undefined") {
-    global.window = {
-      navigator: { userAgent: "node.js" },
-    }; // total fallback / life for webworker
-  }
+polyfill("window.navigator", () => ({ userAgent: "node.js" }));
 
-  if (!window.innerWidth) {
-    window.innerWidth =
-      (typeof process !== "undefined" && process.env.WINDOW_WIDTH) || 800;
-  }
+polyfill(
+  "window.innerWidth",
+  () => (typeof process !== "undefined" && process.env.WINDOW_WIDTH) || 800
+);
 
-  if (!window.innerHeight) {
-    window.innerHeight =
-      (typeof process !== "undefined" && process.env.WINDOW_HEIGHT) || 600;
-  }
+polyfill(
+  "window.innerHeight",
+  () => (typeof process !== "undefined" && process.env.WINDOW_WIDTH) || 800
+);
 
-  console.log(`pixi-shim ❤️ Window ${window.innerWidth}x${window.innerHeight}`);
+polyfill("window.performance", () => {
+  Object.defineProperty(window, "performance", { now: () => Date.now() });
+});
 
-  global.window = window;
-}
+polyfill(
+  "requestAnimationFrame",
+  () =>
+    function requestAnimationFrame(fn) {
+      return setTimeout(fn, 1000 / 60);
+    }
+);
+
+polyfill(
+  "cancelAnimationFrame",
+  () =>
+    function cancelAnimationFrame(fn) {
+      return clearTimeout(fn);
+    }
+);
+
+polyfill("window.requestAnimationFrame", () => requestAnimationFrame);
+
+polyfill("window.cancelAnimationFrame", () => cancelAnimationFrame);
+
+globalThis.addEventListener = document.addEventListener.bind(document);
+
+globalThis.removeEventListener = document.removeEventListener.bind(document);

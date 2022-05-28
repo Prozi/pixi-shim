@@ -2,7 +2,6 @@
 
 // those polyfills are harmless
 require("./polyfills/window");
-require("./polyfills/various");
 
 // this is a total shim of context
 require("./polyfills/dummy");
