@@ -15,7 +15,7 @@ polyfill(
 
 polyfill(
   "window.innerHeight",
-  () => (typeof process !== "undefined" && process.env.WINDOW_WIDTH) || 800
+  () => (typeof process !== "undefined" && process.env.WINDOW_HEIGHT) || 600
 );
 
 polyfill("window.performance", () => {
