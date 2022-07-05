@@ -7,7 +7,9 @@ const {
   loadImage,
 } = require("canvas");
 
-console.log("pixi-shim ❤️ Canvas");
+const debug = require('../debugLogger');
+
+debug("❤️  Canvas");
 
 global.Canvas = window.Canvas = Canvas;
 global.Canvas.createCanvas = createCanvas;

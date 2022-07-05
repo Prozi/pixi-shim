@@ -1,8 +1,9 @@
 "use strict";
 
 const DummyContext = require("../dummy");
+const debug = require('../debugLogger');
 
-console.log("pixi-shim ❤️ PIXI.js");
+debug("❤️  PIXI.js");
 
 class Point {
   constructor(x = 0, y = 0) {
