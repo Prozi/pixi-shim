@@ -22,14 +22,14 @@
   "author": "Jacek Pietal (prozi85@gmail.com)",
   "license": "MIT",
   "dependencies": {
+    "canvas": "^2.9.3",
     "jsdom": "*",
-    "jsdom-global": "*"
+    "jsdom-global": "*",
+    "pixi.js-legacy": "^6.4.2"
   },
   "devDependencies": {
-    "canvas": "^2",
     "jest": "^28.1.2",
     "jest-text-reporter": "^1.0.0",
-    "pixi.js-legacy": "^6.4.2",
     "prettier": "^2.7.1"
   },
   "snyk": true,
