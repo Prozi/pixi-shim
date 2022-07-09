@@ -1,7 +1,9 @@
 "use strict";
 
+const debug = require('../debugLogger');
+
 if (!global.Image) {
-  console.log("pixi-shim ❤️ image");
+  debug("❤️  image");
 
   require("jsdom-global")();
 

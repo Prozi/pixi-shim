@@ -1,3 +1,5 @@
+const debug = require('../debugLogger');
+
 function polyfill(namespace, implementation) {
   const path = namespace.split(".");
 
@@ -14,7 +16,7 @@ function polyfill(namespace, implementation) {
   const test = pointer[end];
 
   if (typeof test === "undefined") {
-    console.log(`pixi-shim ❤️ ${namespace}`);
+    debug(`❤️  ${namespace}`);
 
     const result = implementation();
 

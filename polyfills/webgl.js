@@ -1,7 +1,9 @@
 "use strict";
 
+const debug = require('../debugLogger');
+
 if (!global.WebGLRenderingContext) {
-  console.log("pixi-shim ❤️ WebGL");
+  debug("❤️  WebGL");
 
   const createWebGLContext = require("gl");
 
