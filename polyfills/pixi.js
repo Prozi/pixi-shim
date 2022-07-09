@@ -1,7 +1,7 @@
 "use strict";
 
 const DummyContext = require("../dummy");
-const debug = require('../debugLogger');
+const debug = require("../debugLogger");
 
 debug("❤️  PIXI.js");
 

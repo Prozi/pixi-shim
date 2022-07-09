@@ -1,4 +1,4 @@
-const debug = require('../debugLogger');
+const debug = require("../debugLogger");
 
 function polyfill(namespace, implementation) {
   const path = namespace.split(".");

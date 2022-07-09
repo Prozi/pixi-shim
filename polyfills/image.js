@@ -1,6 +1,6 @@
 "use strict";
 
-const debug = require('../debugLogger');
+const debug = require("../debugLogger");
 
 if (!global.Image) {
   debug("❤️  image");

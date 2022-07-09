@@ -8,8 +8,8 @@
 
 <p align="center">
     <img src="https://badge.fury.io/js/pixi-shim.svg" alt="https://badge.fury.io/js/pixi-shim" />
-    <a href="https://snyk.io/test/github/Prozi/pixi-shim"><img src="https://snyk.io/test/github/Prozi/pixi-shim/badge.svg" alt="https://snyk.io/test/github/Prozi/pixi-shim" /></a>
     <a href="https://app.circleci.com/pipelines/github/Prozi/pixi-shim"><img src="https://circleci.com/gh/Prozi/pixi-shim.svg?style=svg" alt="https://circleci.com/gh/Prozi/pixi-shim" /></a>
+    <a href="https://snyk.io/test/github/Prozi/pixi-shim"><img src="https://snyk.io/test/github/Prozi/pixi-shim/badge.svg" alt="https://snyk.io/test/github/Prozi/pixi-shim" /></a>
 </p>
 
 ## Purpouse
@@ -57,27 +57,12 @@ require("pixi.js-legacy");
 $ yarn add pixi-shim
 ```
 
-## Example use (in node js env):
+## DEBUG
 
-file1.js
+environment flag DEBUG enables DEBUG with progress on which polyfill have been loaded
 
-```javascript
-const PIXI = require("pixi-shim");
-```
-
-file2.js
-
-```javascript
-const PIXI = require("pixi-shim");
-```
-
-server.js
-
-```javascript
-require("./file1");
-require("./file2");
-
-// No runtime conflicts, all dependencies have been included once
+```bash
+$ DEBUG=true node -r pixi-shim yourscript.js
 ```
 
 ## Canvas.toDataURL()

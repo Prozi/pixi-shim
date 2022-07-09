@@ -7,7 +7,7 @@ const {
   loadImage,
 } = require("canvas");
 
-const debug = require('../debugLogger');
+const debug = require("../debugLogger");
 
 debug("❤️  Canvas");
 
