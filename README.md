@@ -36,7 +36,15 @@ with lazy polyfill of
 require("pixi-shim");
 ```
 
-or if your game/app is feature-heavy and it still doesn't work, you might need to add `pixi.js-legacy` too
+## Usage if your game/app is feature-heavy:
+
+and it still doesn't work, you might need to
+
+```bash
+$ yarn add pixi.js-legacy`
+```
+
+and then do
 
 ```js
 require("pixi-shim");
