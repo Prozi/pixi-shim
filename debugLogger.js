@@ -1,5 +1,4 @@
 "use strict";
 
-const debug = require('debug')('pixi-shim');
+const debug = require("debug")("pixi-shim");
 module.exports = debug;
-
