@@ -41,7 +41,7 @@ require("pixi-shim");
 and it still doesn't work, you might need to
 
 ```bash
-$ yarn add pixi.js-legacy`
+$ yarn add pixi.js-legacy
 ```
 
 and then do
