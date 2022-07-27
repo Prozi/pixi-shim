@@ -62,7 +62,7 @@ $ yarn add pixi-shim
 environment flag DEBUG enables DEBUG with progress on which polyfill have been loaded
 
 ```bash
-$ DEBUG=true node -r pixi-shim yourscript.js
+$ DEBUG=pixi-shim node -r pixi-shim yourscript.js
 ```
 
 ## Canvas.toDataURL()
