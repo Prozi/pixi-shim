@@ -22,6 +22,8 @@ polyfill("window.performance", () => {
   Object.defineProperty(window, "performance", { now: () => Date.now() });
 });
 
+polyfill("Worker", () => class Worker {});
+
 polyfill(
   "requestAnimationFrame",
   () =>

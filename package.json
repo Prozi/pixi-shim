@@ -1,6 +1,6 @@
 {
   "name": "pixi-shim",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "description": "pixijs shim for backend use of pixijs",
   "main": "index.js",
   "scripts": {
@@ -23,13 +23,13 @@
   "license": "MIT",
   "dependencies": {
     "debug": "^4.3.4",
-    "jsdom": "23.2.0",
+    "jsdom": "24.0.0",
     "jsdom-global": "*"
   },
   "devDependencies": {
     "jest": "^29",
     "jest-text-reporter": "^1.0.0",
-    "pixi.js-legacy": "^6",
+    "pixi.js-legacy": "^7",
     "prettier": "^3"
   },
   "optionalDependencies": {
