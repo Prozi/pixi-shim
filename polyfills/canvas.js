@@ -32,13 +32,8 @@ function getContext(type = "2d", contextOptions = {}) {
     if (type === "2d") {
       this[ref] = new DummyContext(this, contextOptions);
     } else {
-      const gl = (this[ref] = createWebGLRenderingContext(contextOptions));
-
-      if (gl && typeof gl.createBuffer !== "function") {
-        gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-      } else {
-        this[ref] = new DummyContext(this, contextOptions);
-      }
+      this[ref] = createWebGLRenderingContext(contextOptions);
+      this[ref].getParameter = () => ({});
     }
 
     this[ref].canvas = this;
