@@ -13,7 +13,7 @@ if (!global.Image) {
       "addEventListener",
       function addEventListener(action, callback) {
         return document.addEventListener.call(this, action, callback);
-      }
+      },
     );
   }
 
@@ -23,7 +23,7 @@ if (!global.Image) {
       "removeEventListener",
       function removeEventListener(action, callback) {
         return document.removeEventListener.call(this, action, callback);
-      }
+      },
     );
   }
 

@@ -31,7 +31,7 @@ class Container extends Point {
   addChildAt(child, index) {
     this.children.splice(
       this.children.indexOf(child),
-      Math.max(0, Math.min(index, this.children.length))
+      Math.max(0, Math.min(index, this.children.length)),
     );
   }
   removeChild(child) {

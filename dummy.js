@@ -98,7 +98,7 @@ DummyContext.prototype = contextPrototype.reduce(
   }),
   {
     getImageData: () => false,
-  }
+  },
 );
 
 module.exports = DummyContext;

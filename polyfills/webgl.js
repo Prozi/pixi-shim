@@ -20,7 +20,7 @@ if (!global.WebGLRenderingContext) {
 
         const canvas = global.Canvas.createCanvas(
           window.innerWidth,
-          window.innerHeight
+          window.innerHeight,
         );
 
         let glContext;
@@ -41,7 +41,7 @@ if (!global.WebGLRenderingContext) {
                 glContext = createWebGLContext(
                   window.innerWidth,
                   window.innerHeight,
-                  attributes
+                  attributes,
                 );
                 glContext.canvas = canvas;
               }

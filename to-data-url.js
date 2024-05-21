@@ -22,7 +22,7 @@ module.exports.createSprite = async function createSprite(source) {
   const baseTexture = PIXI.BaseTexture.fromBuffer(
     canvas.toBuffer(),
     canvas.width,
-    canvas.height
+    canvas.height,
   );
   const texture = new PIXI.Texture(baseTexture);
   const sprite = new PIXI.Sprite(texture);
@@ -46,7 +46,7 @@ module.exports.toDataURL = function toDataURL(app) {
       ctx.drawImage(
         image,
         child.x - child.anchor.x * child.width,
-        child.y - child.anchor.y * child.height
+        child.y - child.anchor.y * child.height,
       );
     }
   });
