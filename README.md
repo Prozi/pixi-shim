@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-    PIXI.js Back-End "shim". For mocking Canvas in Node.js with <span style="color: red">❤️</span>
+    PIXI.js Back-End "shim". For mocking Canvas in Node.js with <span style="color: red">??????</span>
 </p>
 
 <p align="center">
@@ -103,4 +103,8 @@ https://app.circleci.com/pipelines/github/Prozi/pixi-shim
 
 ## License
 
-MIT (c) 2020-2022 Jacek Pietal
+MIT
+
+## You can buy me a coffee
+
+https://paypal.me/jacekpietal
