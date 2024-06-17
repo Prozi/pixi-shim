@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "debug": "^4.3.4",
-    "jsdom": "24.0.0",
+    "jsdom": "24.1.0",
     "jsdom-global": "*"
   },
   "devDependencies": {
