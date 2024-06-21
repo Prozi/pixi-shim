@@ -23,7 +23,7 @@
   "author": "Jacek Pietal (prozi85@gmail.com)",
   "license": "MIT",
   "dependencies": {
-    "debug": "^4.3.4",
+    "debug": "^4.3.5",
     "jsdom": "24.1.0",
     "jsdom-global": "*"
   },
