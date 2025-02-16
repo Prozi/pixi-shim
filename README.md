@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-    PIXI.js Back-End "shim". For mocking Canvas in Node.js with <span style="color: red">??????</span>
+    PIXI.js Back-End "shim". For mocking Canvas in Node.js with ❤️
 </p>
 
 <p align="center">
