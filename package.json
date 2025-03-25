@@ -1,6 +1,6 @@
 {
   "name": "pixi-shim",
-  "version": "2.5.3",
+  "version": "2.6.0",
   "description": "pixijs shim for backend use of pixijs",
   "main": "index.js",
   "scripts": {
@@ -32,9 +32,6 @@
     "jest-text-reporter": "^1.0.0",
     "pixi.js-legacy": "^7",
     "prettier": "^3.2.5"
-  },
-  "optionalDependencies": {
-    "canvas": "^2"
   },
   "snyk": true,
   "jest": {
