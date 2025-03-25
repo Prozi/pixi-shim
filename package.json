@@ -1,10 +1,10 @@
 {
   "name": "pixi-shim",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "description": "pixijs shim for backend use of pixijs",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose --silent",
+    "test": "jest --verbose --silent --forceExit",
     "patch-pixi-gl": "sed 's/this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, false);/this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, 0);/g' node_modules/@pixi/core/lib/core.js -i",
     "precommit": "yarn test && yarn prettier . --write"
   },
